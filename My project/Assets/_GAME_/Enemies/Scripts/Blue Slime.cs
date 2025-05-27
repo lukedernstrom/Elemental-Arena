@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class GreenSlime : MonoBehaviour
+public class BlueSlime : MonoBehaviour
 {
     public float speed = 2f;            
     public float movementDistance = 3f;   
