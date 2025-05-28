@@ -15,11 +15,12 @@ public class Shooter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+    
     }
 
     public void Attack()
     {
+        Debug.Log("Attack");
         if (!isShooting)
         {
             StartCoroutine(ShootRoutine());
@@ -29,6 +30,7 @@ public class Shooter : MonoBehaviour
 
     private IEnumerator ShootRoutine()
     {
+        Debug.Log("ShootRoutine");
         isShooting = true;
 
         for (int i = 0; i < burstCount; i++)
@@ -38,6 +40,7 @@ public class Shooter : MonoBehaviour
             Vector2 targetDirection = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
 
             GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Debug.Log("Made bullet");
             newBullet.transform.right = targetDirection;
 
             if (newBullet.TryGetComponent(out Bullet bullet))
@@ -56,6 +59,6 @@ public class Shooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Attack();
     }
 }
