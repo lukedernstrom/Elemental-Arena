@@ -209,7 +209,11 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Butterfly_0: 4530433918361379743
+      Butterfly_1: 4699623745766655208
+      Butterfly_2: -265841166610147798
+      Butterfly_3: -3003387155447937372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

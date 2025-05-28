@@ -8,6 +8,8 @@ public class TopDownPlayerMovement : MonoBehaviour
     private enum Directions { UP, DOWN, LEFT, RIGHT }
     public float _moveSpeed = 50f;
 
+    public BoxCollider areaBounds; // defines the player's playable area
+
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Animator _animator;
     [SerializeField] SpriteRenderer _spriteRenderer;
@@ -28,6 +30,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovementUpdate();
+        BindPosition();
     }
 
     private void GatherInput()
@@ -37,8 +40,18 @@ public class TopDownPlayerMovement : MonoBehaviour
     }
 
     private void MovementUpdate()
-    {
+    {        
         _rb.linearVelocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime;
+    }
+
+    // only allows player to move within playable area
+    private void BindPosition()
+    {
+        Vector3 boundPosition = _rb.position;
+        Bounds bounds = areaBounds.bounds;
+        boundPosition.x = Mathf.Clamp(boundPosition.x, bounds.min.x, bounds.max.x);
+        boundPosition.y = Mathf.Clamp(boundPosition.y, bounds.min.y, bounds.max.y);
+        _rb.position = boundPosition;
     }
 
     private void CalculateFacingDirection()
