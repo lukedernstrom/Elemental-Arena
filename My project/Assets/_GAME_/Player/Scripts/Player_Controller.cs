@@ -13,6 +13,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Animator _animator;
     [SerializeField] SpriteRenderer _spriteRenderer;
+    public PlayerHealthData healthData;
 
     private Vector2 _moveDir = Vector2.zero;
     private Directions _facingDirection = Directions.RIGHT;
@@ -40,7 +41,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     }
 
     private void MovementUpdate()
-    {        
+    {
         _rb.linearVelocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime;
     }
 
@@ -91,6 +92,15 @@ public class TopDownPlayerMovement : MonoBehaviour
         else
         {
             _animator.CrossFade(_animIdleRight, 0);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag.Equals("Bullet") == true)
+        {
+            Debug.Log("Hit bullet");
+            healthData.currentHealth -= 1;
         }
     }
 }
