@@ -43,4 +43,9 @@ public class HealthUI : MonoBehaviour
             hearts[i].sprite = i < healthData.currentHealth ? fullHeart : emptyHeart;
         }
     }
+
+    private void Update()
+    {
+        UpdateHearts();
+    }
 }
