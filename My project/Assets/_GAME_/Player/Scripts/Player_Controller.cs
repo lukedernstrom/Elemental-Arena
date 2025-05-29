@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [SelectionBase]
@@ -17,10 +19,16 @@ public class TopDownPlayerMovement : MonoBehaviour
 
     private Vector2 _moveDir = Vector2.zero;
     private Directions _facingDirection = Directions.RIGHT;
-
+    private bool takingDamage = false;
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
 
+
+    void Start()
+    {
+        Debug.Log("Reset health");
+        healthData.ResetHealth();
+    }
     private void Update()
     {
         GatherInput();
@@ -100,7 +108,20 @@ public class TopDownPlayerMovement : MonoBehaviour
         if (col.gameObject.tag.Equals("Bullet") == true)
         {
             Debug.Log("Hit bullet");
-            healthData.currentHealth -= 1;
+            if (takingDamage == false)
+            {
+                Debug.Log("Taking dammage");
+                StartCoroutine(TakeDamage());
+            }
         }
+    }
+
+    private IEnumerator TakeDamage()
+    {
+        takingDamage = true;
+        healthData.currentHealth -= 1;
+        Debug.Log(healthData.currentHealth);
+        yield return new WaitForSeconds(1);
+        takingDamage = false;
     }
 }
