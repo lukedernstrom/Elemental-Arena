@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float burstTime;
     [SerializeField] private int burstCount;
     [SerializeField] private float restTime = 1f;
+    [SerializeField] private AudioSource shooterSound; // shooting sound effect
 
     private bool isShooting = false;
 
@@ -31,10 +32,10 @@ public class Shooter : MonoBehaviour
     private IEnumerator ShootRoutine()
     {
         isShooting = true;
-
+        
         for (int i = 0; i < burstCount; i++)
         {
-
+            shooterSound.Play();
             // GameObject.FindGameObjectWithTag("Player").transform.position;
             Vector2 targetDirection = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;
 
@@ -49,8 +50,6 @@ public class Shooter : MonoBehaviour
 
             yield return new WaitForSeconds(burstTime);
         }
-
-
 
         yield return new WaitForSeconds(restTime);
         isShooting = false;
