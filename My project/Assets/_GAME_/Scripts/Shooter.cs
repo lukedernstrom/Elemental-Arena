@@ -6,6 +6,7 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float bulletMoveSpeed;
+    [SerializeField] private float bulletRange = 1f;
     [SerializeField] private float burstTime;
     [SerializeField] private int burstCount;
     [SerializeField] private float restTime = 1f;
@@ -46,14 +47,16 @@ public class Shooter : MonoBehaviour
             if (newBullet.TryGetComponent(out Bullet bullet))
             {
                 bullet.UpdateMoveSpeed(bulletMoveSpeed);
+                bullet.UpdateProjectileRange(bulletRange);
             }
 
             yield return new WaitForSeconds(burstTime);
         }
 
-        
+
 
         yield return new WaitForSeconds(restTime);
+        isShooting = false;
     }
 
     // Update is called once per frame
