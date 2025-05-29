@@ -6,10 +6,11 @@ public class GreenSlime : MonoBehaviour
     public float movementDistance = 3f;   
 
     private Vector3 startPosition;
-    private bool movingRight = true;
+    private bool movingRight = false;
 
     void Start()
     {
+        Flip(); // start facing left to go opposite direction than the blue slime
         startPosition = transform.position;
     }
 
@@ -22,7 +23,7 @@ public class GreenSlime : MonoBehaviour
     {
         if (movingRight)
         {
-            transform.Translate(Vector2.right * speed * Time.deltaTime);
+            transform.Translate((Vector2.right + Vector2.down) * speed * Time.deltaTime);
             if (transform.position.x >= startPosition.x + movementDistance)
             {
                 movingRight = false;
@@ -31,7 +32,7 @@ public class GreenSlime : MonoBehaviour
         }
         else
         {
-            transform.Translate(Vector2.left * speed * Time.deltaTime);
+            transform.Translate((Vector2.left + Vector2.up) * speed * Time.deltaTime);
             if (transform.position.x <= startPosition.x - movementDistance)
             {
                 movingRight = true;
