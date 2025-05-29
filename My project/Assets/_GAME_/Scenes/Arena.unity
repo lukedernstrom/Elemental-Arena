@@ -282,7 +282,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: -464296517
@@ -12683,7 +12683,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca5b2522dfc941f0b41967d10788aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 200
+  _moveSpeed: 220
   areaBounds: {fileID: 1427189259}
   _rb: {fileID: 1542486647}
   _animator: {fileID: 1015583569}

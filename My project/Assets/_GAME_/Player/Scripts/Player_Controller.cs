@@ -119,7 +119,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     private IEnumerator TakeDamage()
     {
         takingDamage = true;
-        healthData.currentHealth -= 1;
+        healthData.TakeDamage(1);
         Debug.Log(healthData.currentHealth);
         yield return new WaitForSeconds(1);
         takingDamage = false;
