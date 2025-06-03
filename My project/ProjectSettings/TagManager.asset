@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bullet
   - PlayableArea
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX
