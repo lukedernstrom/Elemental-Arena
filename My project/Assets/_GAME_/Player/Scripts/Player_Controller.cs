@@ -23,6 +23,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
     private bool _dashing = false;
+    private bool _dashed = false;
 
 
     void Start()
@@ -55,10 +56,10 @@ public class TopDownPlayerMovement : MonoBehaviour
 
     private void MovementUpdate()
     {
-        if (_dashing)
+        if (_dashing && !_dashed)
         {
             _rb.linearVelocity = _moveDir.normalized * 80f;
-            _dashing = false;
+            _dashed = true;
         }
         else
         {
@@ -143,6 +144,8 @@ public class TopDownPlayerMovement : MonoBehaviour
         if (_dashing) yield break;
         _dashing = true;
         Debug.Log("dashing");
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.4f);
+        _dashing = false;
+        _dashed = false;
     }
 }
