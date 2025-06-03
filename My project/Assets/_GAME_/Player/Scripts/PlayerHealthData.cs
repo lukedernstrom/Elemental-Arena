@@ -17,7 +17,7 @@ public class PlayerHealthData : ScriptableObject
         currentHealth = Mathf.Max(currentHealth - amount, 0);
         if (currentHealth == 0)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            SceneManager.LoadScene("Title");
         }
     }
 
