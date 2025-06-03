@@ -960,6 +960,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Butterfly_0 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 9209946062386202285, guid: 175a047226e6c8e4892fdf39883e9cfe, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4236281531855276299, guid: ce9808b8eea3b441585715bc80f1ffc3, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -998,7 +1002,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f37c0bc4442270489cd865cb94c5e63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4236281531855276299, guid: 80a070752c16cab43a9f4774cc2bc978, type: 3}
+  bulletPrefab: {fileID: 4236281531855276299, guid: 61a132bcfc709497f99b2751b44a926b, type: 3}
   bulletMoveSpeed: 100
   bulletRange: 3
   burstTime: 0.25
@@ -117394,6 +117398,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3707521525635950879, guid: ecfba7ef5233d6a4c8ee2da91462f7f9, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4236281531855276299, guid: ce9808b8eea3b441585715bc80f1ffc3, type: 3}
     - target: {fileID: 6187918672561953668, guid: ecfba7ef5233d6a4c8ee2da91462f7f9, type: 3}
       propertyPath: m_Name
       value: Butterfly_0
@@ -117512,6 +117520,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue Slime_0
       objectReference: {fileID: 0}
+    - target: {fileID: 6858680858867662431, guid: 57074bd2720037744abbec89c29ea20c, type: 3}
+      propertyPath: bulletPrefab
+      value: 
+      objectReference: {fileID: 4236281531855276299, guid: 61a132bcfc709497f99b2751b44a926b, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
