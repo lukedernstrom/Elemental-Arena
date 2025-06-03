@@ -15,6 +15,11 @@ public class TopDownPlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Animator _animator;
     [SerializeField] SpriteRenderer _spriteRenderer;
+    [SerializeField] private GameObject bulletPrefab;
+    private float bulletMoveSpeed = 10;
+    private float bulletRange = 13;
+    private float restTime = 0.5f;
+
     public PlayerHealthData healthData;
 
     private Vector2 _moveDir = Vector2.zero;
@@ -22,6 +27,8 @@ public class TopDownPlayerMovement : MonoBehaviour
     private bool takingDamage = false;
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
+    private bool isShooting = false;
+
     private bool _dashing = false;
     private bool _dashed = false;
 
@@ -36,6 +43,10 @@ public class TopDownPlayerMovement : MonoBehaviour
         GatherInput();
         CalculateFacingDirection();
         UpdateAnimation();
+        if (Input.GetMouseButton(0) && !isShooting)
+        {
+            StartCoroutine(ShootRoutine());
+        }
     }
 
     private void FixedUpdate()
@@ -130,6 +141,7 @@ public class TopDownPlayerMovement : MonoBehaviour
         }
     }
 
+
     private IEnumerator TakeDamage()
     {
         takingDamage = true;
@@ -138,6 +150,31 @@ public class TopDownPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
         takingDamage = false;
     }
+
+    private IEnumerator ShootRoutine()
+    {
+        isShooting = true;
+        // Vector3 target = Input.mousePosition;
+        // target.z = 0.0f;
+        // target = Camera.main.ScreenToWorldPoint(target);
+        // target = target - transform.position;
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 target = (Vector2)((mousePos - transform.position));
+        target.Normalize();
+
+        GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+        newBullet.transform.right = target;
+        if (newBullet.TryGetComponent(out Bullet bullet))
+        {
+            bullet.UpdateMoveSpeed(bulletMoveSpeed);
+            bullet.UpdateProjectileRange(bulletRange);
+            Debug.Log("shot at " + target);
+        }
+        yield return new WaitForSeconds(restTime);
+        isShooting = false;
+
+    }
+
 
     private IEnumerator DashOnce()
     {

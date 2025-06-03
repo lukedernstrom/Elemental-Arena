@@ -60,4 +60,13 @@ public class Shooter : MonoBehaviour
     {
         Attack();
     }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        Debug.Log("Collision");
+        if (col.gameObject.tag.Equals("PlayerBullet") == true)
+        {
+            Destroy(gameObject);
+        }
+    }
 }
