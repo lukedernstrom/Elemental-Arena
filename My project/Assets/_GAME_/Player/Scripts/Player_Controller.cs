@@ -69,6 +69,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         if (_dashing && !_dashed)
         {
+            StartCoroutine(Disappear());
             _rb.linearVelocity = _moveDir.normalized * 80f;
             _dashed = true;
         }
@@ -184,5 +185,12 @@ public class TopDownPlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.4f);
         _dashing = false;
         _dashed = false;
+    }
+
+    private IEnumerator Disappear()
+    {
+        _spriteRenderer.enabled = false;
+        yield return new WaitForSeconds(0.2f);
+        _spriteRenderer.enabled = true;
     }
 }
