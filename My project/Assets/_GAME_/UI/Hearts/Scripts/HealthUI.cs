@@ -49,8 +49,8 @@ public class HealthUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        UpdateHearts();
-    }
+    //private void Update()
+   // {
+    //    UpdateHearts();
+    //}
 }

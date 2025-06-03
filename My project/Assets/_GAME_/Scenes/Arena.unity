@@ -342,7 +342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -350, y: 169.07}
+  m_AnchoredPosition: {x: -350, y: 320.19}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &277397006
@@ -969,7 +969,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 175a047226e6c8e4892fdf39883e9cfe, type: 3}
-<<<<<<< HEAD
 --- !u!1 &663179099
 GameObject:
   m_ObjectHideFlags: 0
@@ -1213,8 +1212,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-=======
->>>>>>> b64ca3e542a757321b64f8c7b180263c800c2d4f
 --- !u!1001 &793863795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1376,8 +1373,8 @@ Transform:
   m_GameObject: {fileID: 1015583567}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.0238, y: 0.3075, z: 0}
-  m_LocalScale: {x: 1.615208, y: 1.615208, z: 1.615208}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 848902325}
@@ -12734,12 +12731,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dca5b2522dfc941f0b41967d10788aae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _moveSpeed: 250
+  _moveSpeed: 220
   areaBounds: {fileID: 1427189259}
   _rb: {fileID: 1542486647}
   _animator: {fileID: 1015583569}
   _spriteRenderer: {fileID: 1015583570}
-  bulletPrefab: {fileID: 4236281531855276299, guid: 0bfe3ca35e11d0841b2ada7ca89f38d7, type: 3}
   healthData: {fileID: 11400000, guid: e17dcb608b18131439a8630e2aad6aa5, type: 2}
 --- !u!50 &1542486647
 Rigidbody2D:
