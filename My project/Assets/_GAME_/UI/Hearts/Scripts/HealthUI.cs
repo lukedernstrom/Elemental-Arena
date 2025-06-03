@@ -17,6 +17,11 @@ public class HealthUI : MonoBehaviour
         UpdateHearts();
     }
 
+    private void Update()
+    {
+        UpdateHearts();
+    }
+
     public void CreateHearts()
     {
         // Clear old hearts

@@ -29,6 +29,8 @@ public class TopDownPlayerMovement : MonoBehaviour
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
     private bool isShooting = false;
 
+    private bool _dashing = false;
+    private bool _dashed = false;
 
 
     void Start()
@@ -57,11 +59,23 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         _moveDir.x = Input.GetAxisRaw("Horizontal");
         _moveDir.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StartCoroutine(DashOnce());
+        }
     }
 
     private void MovementUpdate()
     {
-        _rb.linearVelocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime;
+        if (_dashing && !_dashed)
+        {
+            _rb.linearVelocity = _moveDir.normalized * 80f;
+            _dashed = true;
+        }
+        else
+        {
+            _rb.linearVelocity = _moveDir.normalized * _moveSpeed * Time.fixedDeltaTime;
+        }
     }
 
     // only allows player to move within playable area
@@ -162,4 +176,13 @@ public class TopDownPlayerMovement : MonoBehaviour
     }
 
 
+    private IEnumerator DashOnce()
+    {
+        if (_dashing) yield break;
+        _dashing = true;
+        Debug.Log("dashing");
+        yield return new WaitForSeconds(0.4f);
+        _dashing = false;
+        _dashed = false;
+    }
 }
