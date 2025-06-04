@@ -7,11 +7,16 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float projectileRange = 1f; //How long until bullet despawns
     [SerializeField] private float moveSpeed = 1f;
 
+    private ParticleSystem particleSystem;
+    private SpriteRenderer sr;
+    public bool once = true;
     private Vector3 spawnPoint;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         spawnPoint = transform.position;
+        particleSystem = GetComponent<ParticleSystem>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
 
@@ -39,10 +44,23 @@ public class Bullet : MonoBehaviour
 
     private void DetectFireDistance()
     {
-        if (Vector3.Distance(transform.position, spawnPoint) > projectileRange)
+        if ((Vector3.Distance(transform.position, spawnPoint) > projectileRange) && once)
         {
-            Destroy(gameObject);
-        }   
+            once = false;
+            var em = particleSystem.emission;
+            var dur = particleSystem.duration;
+            em.enabled = true;
+            particleSystem.Play();
+            // Destroy(gameObject);
+            Debug.Log("Particle");
+            Destroy(sr);
+            Invoke(nameof(DestroyObj), dur);
+        }
+    }
+
+    void DestroyObj()
+    {
+        Destroy(gameObject);
     }
 }
 
