@@ -131,10 +131,19 @@ public class TopDownPlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Bullet") == true && !_dashing)
+        if (_dashing) return; // take no damage when dashing
+
+        if (col.gameObject.tag.Equals("Bullet") == true)
         {
             bulletScript = col.gameObject.GetComponent<Bullet>();
             bulletScript.EndBullet();
+            if (takingDamage == false)
+            {
+                StartCoroutine(TakeDamage());
+            }
+        }
+        if (col.gameObject.tag.Equals("Enemy") == true)
+        {
             if (takingDamage == false)
             {
                 StartCoroutine(TakeDamage());
@@ -181,7 +190,6 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         if (_dashing) yield break;
         _dashing = true;
-        Debug.Log("dashing");
         yield return new WaitForSeconds(0.8f);
         _dashing = false;
         _dashed = false;

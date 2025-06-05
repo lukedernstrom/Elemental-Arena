@@ -131,6 +131,7 @@ MonoBehaviour:
   burstTime: 1
   burstCount: 10
   restTime: 0.01
+  bulletScript: {fileID: 0}
   shooterSound: {fileID: 2802964818776203737}
 --- !u!82 &2802964818776203737
 AudioSource:
@@ -263,7 +264,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.12272835, y: -0.135705}
+  m_Offset: {x: -0.2135818, y: -0.47295493}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -273,5 +274,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 5.4472704, y: 5.9485893}
+  m_Size: {x: 4.77237, y: 4.6139407}
   m_EdgeRadius: 0
