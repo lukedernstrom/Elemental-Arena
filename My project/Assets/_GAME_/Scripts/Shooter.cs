@@ -10,6 +10,7 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float burstTime;
     [SerializeField] private int burstCount;
     [SerializeField] private float restTime = 1f;
+    public Bullet bulletScript;
     [SerializeField] private AudioSource shooterSound; // shooting sound effect
 
     private bool isShooting = false;
@@ -17,7 +18,7 @@ public class Shooter : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-    
+
     }
 
     public void Attack()
@@ -66,7 +67,13 @@ public class Shooter : MonoBehaviour
         Debug.Log("Collision");
         if (col.gameObject.tag.Equals("PlayerBullet") == true)
         {
+            bulletScript = col.gameObject.GetComponent<Bullet>();
+            bulletScript.EndBullet();
             Destroy(gameObject);
+            // Bullet other = col.gameObject.Bullet;
+            // Bullet other = (Bullet) bulletPrefab.GetComponent(typeof(Bullet));
+            // other.EndBullet();
+            // bulletPrefab.EndBullet();
         }
     }
 }

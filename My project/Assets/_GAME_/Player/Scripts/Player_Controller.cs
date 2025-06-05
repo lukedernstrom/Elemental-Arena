@@ -19,18 +19,17 @@ public class TopDownPlayerMovement : MonoBehaviour
     private float bulletMoveSpeed = 10;
     private float bulletRange = 13;
     private float restTime = 0.5f;
-
     public PlayerHealthData healthData;
-
     private Vector2 _moveDir = Vector2.zero;
     private Directions _facingDirection = Directions.RIGHT;
     private bool takingDamage = false;
     private readonly int _animMoveRight = Animator.StringToHash("Anim_Player_Move_Right");
     private readonly int _animIdleRight = Animator.StringToHash("Anim_Player_Idle_Right");
     private bool isShooting = false;
-
     private bool _dashing = false;
     private bool _dashed = false;
+    public Bullet bulletScript;
+
 
 
     void Start()
@@ -133,10 +132,10 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         if (col.gameObject.tag.Equals("Bullet") == true)
         {
-            Debug.Log("Hit bullet");
+            bulletScript = col.gameObject.GetComponent<Bullet>();
+            bulletScript.EndBullet();
             if (takingDamage == false)
             {
-                Debug.Log("Taking dammage");
                 StartCoroutine(TakeDamage());
             }
         }
