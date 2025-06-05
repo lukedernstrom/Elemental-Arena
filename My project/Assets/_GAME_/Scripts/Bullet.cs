@@ -47,17 +47,29 @@ public class Bullet : MonoBehaviour
         if ((Vector3.Distance(transform.position, spawnPoint) > projectileRange) && once)
         {
             once = false;
-            var em = particleSystem.emission;
-            var dur = particleSystem.duration;
-            em.enabled = true;
-            particleSystem.Play();
-            // Destroy(gameObject);
-            Debug.Log("Particle");
-            Destroy(sr);
-            Invoke(nameof(DestroyObj), dur);
+            EndBullet();
+            // var em = particleSystem.emission;
+            // var dur = particleSystem.duration;
+            // em.enabled = true;
+            // particleSystem.Play();
+            // // Destroy(gameObject);
+            // Debug.Log("Particle");
+            // Destroy(sr);
+            // Invoke(nameof(DestroyObj), dur);
         }
     }
 
+    public void EndBullet()
+    {
+        var em = particleSystem.emission;
+        var dur = particleSystem.duration;
+        em.enabled = true;
+        particleSystem.Play();
+        // Destroy(gameObject);
+        Debug.Log("Particle");
+        Destroy(sr);
+        Invoke(nameof(DestroyObj), dur);
+    }
     void DestroyObj()
     {
         Destroy(gameObject);
