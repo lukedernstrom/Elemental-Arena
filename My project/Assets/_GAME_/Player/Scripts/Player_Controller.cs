@@ -132,7 +132,7 @@ public class TopDownPlayerMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.gameObject.tag.Equals("Bullet") == true)
+        if (col.gameObject.tag.Equals("Bullet") == true && !_dashing)
         {
             Debug.Log("Hit bullet");
             if (takingDamage == false)
@@ -183,7 +183,7 @@ public class TopDownPlayerMovement : MonoBehaviour
         if (_dashing) yield break;
         _dashing = true;
         Debug.Log("dashing");
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
         _dashing = false;
         _dashed = false;
     }
@@ -192,7 +192,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     {
         _spriteRenderer.enabled = false;
         SpawnSmoke();
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         _spriteRenderer.enabled = true;
         SpawnSmoke();
     }
