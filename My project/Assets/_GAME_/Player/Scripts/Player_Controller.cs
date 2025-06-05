@@ -30,6 +30,7 @@ public class TopDownPlayerMovement : MonoBehaviour
     private bool _dashed = false;
     public Bullet bulletScript;
 
+    [SerializeField] ParticleSystem dashSmoke;
 
 
     void Start()
@@ -69,7 +70,7 @@ public class TopDownPlayerMovement : MonoBehaviour
         if (_dashing && !_dashed)
         {
             StartCoroutine(Disappear());
-            _rb.linearVelocity = _moveDir.normalized * 80f;
+            _rb.linearVelocity = _moveDir.normalized * 100f;
             _dashed = true;
         }
         else
@@ -189,7 +190,14 @@ public class TopDownPlayerMovement : MonoBehaviour
     private IEnumerator Disappear()
     {
         _spriteRenderer.enabled = false;
+        SpawnSmoke();
         yield return new WaitForSeconds(0.2f);
         _spriteRenderer.enabled = true;
+        SpawnSmoke();
+    }
+
+    public void SpawnSmoke()
+    {
+        Instantiate(dashSmoke, transform.position, Quaternion.identity);
     }
 }

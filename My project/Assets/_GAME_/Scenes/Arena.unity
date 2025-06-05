@@ -13354,6 +13354,7 @@ MonoBehaviour:
   _spriteRenderer: {fileID: 1015583570}
   bulletPrefab: {fileID: 4236281531855276299, guid: 0bfe3ca35e11d0841b2ada7ca89f38d7, type: 3}
   healthData: {fileID: 11400000, guid: e17dcb608b18131439a8630e2aad6aa5, type: 2}
+  dashSmoke: {fileID: 8684994743612434275, guid: 753b58ade129e7845bba242e5317fbc7, type: 3}
 --- !u!50 &1542486647
 Rigidbody2D:
   serializedVersion: 5
