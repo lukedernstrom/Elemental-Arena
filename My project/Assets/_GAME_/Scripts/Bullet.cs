@@ -61,6 +61,7 @@ public class Bullet : MonoBehaviour
 
     public void EndBullet()
     {
+        gameObject.tag = "ExpiredBullet";
         var em = particleSystem.emission;
         var dur = particleSystem.duration;
         em.enabled = true;

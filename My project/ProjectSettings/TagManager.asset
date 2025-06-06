@@ -8,6 +8,7 @@ TagManager:
   - PlayableArea
   - PlayerBullet
   - Enemy
+  - ExpiredBullet
   layers:
   - Default
   - TransparentFX

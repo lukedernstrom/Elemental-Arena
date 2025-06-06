@@ -12,8 +12,9 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float restTime = 1f;
     public Bullet bulletScript;
     [SerializeField] private AudioSource shooterSound; // shooting sound effect
-
     private bool isShooting = false;
+    private int health = 5;
+    [SerializeField] public GameObject deathParticles;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,11 +70,16 @@ public class Shooter : MonoBehaviour
         {
             bulletScript = col.gameObject.GetComponent<Bullet>();
             bulletScript.EndBullet();
-            Destroy(gameObject);
+            health -= 1;
+            if (health <= 0)
+            {
+                Instantiate(deathParticles, transform.position, transform.rotation);
+                Destroy(gameObject);
+            }
             // Bullet other = col.gameObject.Bullet;
-            // Bullet other = (Bullet) bulletPrefab.GetComponent(typeof(Bullet));
-            // other.EndBullet();
-            // bulletPrefab.EndBullet();
-        }
+                // Bullet other = (Bullet) bulletPrefab.GetComponent(typeof(Bullet));
+                // other.EndBullet();
+                // bulletPrefab.EndBullet();
+            }
     }
 }

@@ -133,6 +133,7 @@ MonoBehaviour:
   restTime: 0.01
   bulletScript: {fileID: 0}
   shooterSound: {fileID: 2802964818776203737}
+  deathParticles: {fileID: 5148406777247207703, guid: 1909c1a7d9c79854fa44cb0eb5aa5058, type: 3}
 --- !u!82 &2802964818776203737
 AudioSource:
   m_ObjectHideFlags: 0
