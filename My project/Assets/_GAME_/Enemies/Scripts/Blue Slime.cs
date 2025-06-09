@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class BlueSlime : MonoBehaviour
 {
+    [SerializeField] private AudioClip walkClip;
+    private AudioSource audioSource;
     public float speed = 2f;            
     public float movementDistance = 3f;   
 
@@ -11,6 +13,14 @@ public class BlueSlime : MonoBehaviour
     void Start()
     {
         startPosition = transform.position;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = walkClip;
+        audioSource.loop = true;
+        audioSource.playOnAwake = false;
+        audioSource.volume = 0.05f; //volume control
+        audioSource.Play();
+        
     }
 
     void Update()

@@ -11,7 +11,6 @@ public class TopDownPlayerMovement : MonoBehaviour
     public float _moveSpeed = 50f;
 
     public BoxCollider areaBounds; // defines the player's playable area
-
     [SerializeField] Rigidbody2D _rb;
     [SerializeField] Animator _animator;
     [SerializeField] SpriteRenderer _spriteRenderer;
@@ -31,12 +30,18 @@ public class TopDownPlayerMovement : MonoBehaviour
     public Bullet bulletScript;
 
     [SerializeField] ParticleSystem dashSmoke;
+    [SerializeField] private AudioClip shootClip;
+    private AudioSource shootAudio;
 
 
     void Start()
     {
         Debug.Log("Reset health");
         healthData.ResetHealth();
+
+        shootAudio = gameObject.AddComponent<AudioSource>();
+        shootAudio.playOnAwake = false;
+
     }
     private void Update()
     {
@@ -171,6 +176,12 @@ public class TopDownPlayerMovement : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 target = (Vector2)((mousePos - transform.position));
         target.Normalize();
+
+        if (shootClip != null)
+        {
+            shootAudio.volume = 0.5f;
+            shootAudio.PlayOneShot(shootClip);
+        }
 
         GameObject newBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
         newBullet.transform.right = target;

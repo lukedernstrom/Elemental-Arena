@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d179d309014e74ddf9adbd680b0cc3d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  walkClip: {fileID: 8300000, guid: 446f3cc446b2f16458c468354c54b76c, type: 3}
   speed: 2
   movementDistance: 3
 --- !u!114 &121571547183543363
@@ -149,6 +150,7 @@ MonoBehaviour:
   bulletScript: {fileID: 0}
   shooterSound: {fileID: 1122788157079558730}
   deathParticles: {fileID: 5148406777247207703, guid: 1909c1a7d9c79854fa44cb0eb5aa5058, type: 3}
+  shootVolume: 0.5
 --- !u!82 &1122788157079558730
 AudioSource:
   m_ObjectHideFlags: 0
@@ -159,8 +161,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3b8e05a7f66acae4981d46fcbcc027b0, type: 3}
-  m_Resource: {fileID: 8300000, guid: 3b8e05a7f66acae4981d46fcbcc027b0, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 4071b6267cf06884aa6f279a5f9d9566, type: 3}
+  m_Resource: {fileID: 8300000, guid: 4071b6267cf06884aa6f279a5f9d9566, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

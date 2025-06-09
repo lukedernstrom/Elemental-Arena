@@ -15,6 +15,7 @@ public class Shooter : MonoBehaviour
     private bool isShooting = false;
     private int health = 5;
     [SerializeField] public GameObject deathParticles;
+    [SerializeField] private float shootVolume = 1f;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,6 +38,7 @@ public class Shooter : MonoBehaviour
         
         for (int i = 0; i < burstCount; i++)
         {
+            shooterSound.volume = shootVolume;
             shooterSound.Play();
             // GameObject.FindGameObjectWithTag("Player").transform.position;
             Vector2 targetDirection = GameObject.FindGameObjectWithTag("Player").transform.position - transform.position;

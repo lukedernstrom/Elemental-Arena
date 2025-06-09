@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class GreenSlime : MonoBehaviour
 {
+    [SerializeField] private AudioClip walkClip;
+    private AudioSource audioSource;
     public float speed = 2f;            
     public float movementDistance = 3f;   
 
@@ -12,6 +14,13 @@ public class GreenSlime : MonoBehaviour
     {
         Flip(); // start facing left to go opposite direction than the blue slime
         startPosition = transform.position;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = walkClip;
+        audioSource.loop = true;
+        audioSource.playOnAwake = false;
+        audioSource.volume = 1f; //volume control
+        audioSource.Play();
     }
 
     void Update()

@@ -13356,6 +13356,7 @@ MonoBehaviour:
   healthData: {fileID: 11400000, guid: e17dcb608b18131439a8630e2aad6aa5, type: 2}
   bulletScript: {fileID: 0}
   dashSmoke: {fileID: 8684994743612434275, guid: 753b58ade129e7845bba242e5317fbc7, type: 3}
+  shootClip: {fileID: 8300000, guid: 9fd463118c0a4104499cb9496fc8659b, type: 3}
 --- !u!50 &1542486647
 Rigidbody2D:
   serializedVersion: 5
